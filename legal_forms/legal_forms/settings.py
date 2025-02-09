@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-0qbxjb0*2&zzi92&ow$)-!81%pp-f%6)=k5#p&dq!5eeochsp-
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["0.0.0.0", "localhost", "127.0.0.1"]
 
 
 # Application definition
@@ -37,6 +37,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'rest_framework',
+
+    'nested_admin',
+
+    'forms.apps.FormsConfig',
 ]
 
 MIDDLEWARE = [
@@ -103,9 +109,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/5.1/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'ru'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Europe/Moscow'
 
 USE_I18N = True
 
@@ -121,3 +127,22 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.AllowAny',  # Разрешить всем пользователям
+    ]
+}
+
+
+
+# Custom settings
+QUESTION_TYPES = {
+    "TEXT": "Text field",
+    "ONE_O": "One option",
+    "MUL_O": "Multiple options",
+    "NUM": "Number",
+    "Y_N": "Yes or No",
+    "FILE": "File field",
+}
